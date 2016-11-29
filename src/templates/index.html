@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> .:: ML service ::. </title>
+</head>
+<body>
+
+<table border="1">
+    <form action = "http://localhost:5001/result" method = "post">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type = "text" name = "Name" /></td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td><input type = "text" name = "chemistry" /></td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td><input type = "text" name = "Physics" /></td>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td><input type ="text" name = "Mathematics" /></td>
+            </tr>
+        </table>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+</table>
+<form action="http://localhost:5001/test" method="get"><input type = "submit" value = "test" /></form>
+<table border = 1>
+    {% if result is defined %}
+         {% for key, value in result.iteritems() %}
+
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+
+         {% endfor %}
+    {% endif %}
+</table>
+<table>
+    {% if payload is defined %}
+    <tr>
+        <th> Year </th>
+        <th> Month </th>
+    </tr>
+        {% for dic in payload %}
+            <tr>
+                <td> {{ dic["Year"] }} </td>
+                <td> {{ dic["Month"] }} </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+
+
+</body>
+</html>
